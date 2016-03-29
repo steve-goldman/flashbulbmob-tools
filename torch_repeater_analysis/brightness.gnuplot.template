@@ -1,0 +1,6 @@
+set term png size 1200,400
+set output "%OUTPUT%"
+set datafile separator ","
+set yrange [-.01:1.01]
+set title "Clustered Brightness"
+plot "%INPUT%" using 1 with lines linewidth 3 title "Brightness", "%INPUT%" using 2 with lines linewidth 1 title "Clustered"
