@@ -56,7 +56,7 @@ CMD="$BASE/brightness.sh -i $VIDEO_DIR"
 if [[ $VERBOSE ]]; then
     echo "running... $CMD"
 fi
-$CMD > brightnesses.csv
+$CMD > $INPUT.brightnesses.csv
 
 # cleanup
 if [[ $DO_NOT_CLEAN_UP == "" ]]; then
@@ -68,21 +68,21 @@ if [[ $DO_NOT_CLEAN_UP == "" ]]; then
 fi
 
 # clusterify
-CMD="$BASE/cluster.sh -i brightnesses.csv -o clusters.csv"
+CMD="$BASE/cluster.sh -i $INPUT.brightnesses.csv -o $INPUT.clusters.csv"
 if [[ $VERBOSE ]]; then
     echo "running... $CMD"
 fi
 $CMD
 
 # make the graph
-CMD="$BASE/graph.sh -i clusters.csv -o graph.png"
+CMD="$BASE/graph.sh -i $INPUT.clusters.csv -o $INPUT.graph.png"
 if [[ $VERBOSE ]]; then
     echo "running... $CMD"
 fi
 $CMD
 
 # summarize
-CMD="$BASE/summarize.sh -i clusters.csv"
+CMD="$BASE/summarize.sh -i $INPUT.clusters.csv"
 if [[ $VERBOSE ]]; then
     echo "running... $CMD"
 fi

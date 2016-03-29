@@ -29,10 +29,8 @@ if [[ ! -e $INPUT ]]; then
     usage
 fi
 
-cut -d, -f2 $INPUT | uniq -c | sed '1d;$d' | egrep '1\.0' | awk '{print $1}' > on_lengths.csv
-cut -d, -f2 $INPUT | uniq -c | sed '1d;$d' | egrep '0\.0' | awk '{print $1}' > off_lengths.csv
 echo "ON"
-st on_lengths.csv
+cut -d, -f2 $INPUT | uniq -c | sed '1d;$d' | egrep '1\.0' | awk '{print $1}' | st
 echo
 echo "OFF"
-st off_lengths.csv
+cut -d, -f2 $INPUT | uniq -c | sed '1d;$d' | egrep '0\.0' | awk '{print $1}' | st
